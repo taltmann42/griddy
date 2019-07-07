@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../dist.css">
+    <style>
+        body {
+            margin: 0;
+        }
+        .cell {
+            box-sizing: border-box;
+            padding: 10px;
+            background-color: lightgray;
+            border: 1px solid black;
+        }
+        .spacer {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="griddy-container">
+        <div class="griddy spacer">
+            <div class="griddy-cell griddy-from-1 griddy-to-4">
+                <div class="cell">1-4</div></div>
+            <div class="griddy-cell griddy-from-5 griddy-to-8">
+                <div class="cell">5-8</div>
+            </div>
+            <div class="griddy-cell griddy-from-9 griddy-to-12">
+                <div class="cell">9-12</div>        
+            </div>
+        </div>
+        <div class="griddy spacer">
+            <div class="griddy-cell griddy-from-1 griddy-to-3">
+                <div class="cell">1-3</div>
+            </div>
+            <div class="griddy-cell griddy-from-5 griddy-to-8">
+                <div class="cell">5-8</div>
+            </div>
+            <div class="griddy-cell griddy-from-10 griddy-to-12">
+                <div class="cell">10-12</div>
+            </div>
+        </div>
+        <div class="griddy spacer">
+            <div class="griddy-cell griddy-from-1 griddy-to-4">
+                <div class="cell">
+                    1-4<br>
+                    with<br>
+                    more<br>
+                    content<br>
+                    so<br>
+                    the<br>
+                    overlay<br>
+                    can be seen
+                </div>
+            </div>
+            <div class="griddy-cell griddy-center griddy-from-3 griddy-to-12">
+                <div class="cell">10-12 overlaps! and vertically centered</div>
+            </div>
+        </div>
+
+        <div class="griddy spacer">
+            <div class="griddy-cell griddy-from-1 griddy-to-8">
+                <div class="cell">
+                    Nested Grid?
+                    <div class="griddy">
+                        <div class="griddy-cell griddy-from-1 griddy-to-6">
+                            <div class="cell">Say</div>
+                        </div>
+                        <div class="griddy-cell griddy-from-7 griddy-to-12">
+                            <div class="cell">no more!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="griddy-cell griddy-from-9 griddy-to-12">
+                <div class="cell">
+                    Just standing here
+                </div>
+            </div>
+        </div>
+
+        <h2>Grid-Breaking</h2>
+
+        <div class="griddy spacer">
+            <div class="griddy-cell griddy-void">
+                <div class="cell">Now to the grid-breaking stuff</div>
+            </div>
+        </div>
+
+        <div class="griddy spacer">
+            <div class="griddy-cell griddy-from-1 griddy-to-4">
+                <div class="cell">
+                    Breaking out of the grid<br>
+                    in bootstrap on both sides<br>
+                    is doable with some not so nice workarounds<br>
+                    but here, the outer area (void)<br>
+                    is actually part of the grid
+                </div>
+            </div>
+            <div class="griddy-cell griddy-center griddy-from-5 griddy-to-void">
+                <div class="cell">
+                    Now it's easy to break out on either side!
+                </div>
+            </div>
+        </div>
+        <div class="griddy spacer">
+            <div class="griddy-cell griddy-from-void griddy-to-4">
+                <div class="cell">
+                    Breaking out of the grid<br>
+                    in bootstrap on both sides<br>
+                    is doable with some not so nice workarounds<br>
+                    but here, the outer area (void)<br>
+                    is actually part of the grid
+                </div>
+            </div>
+            <div class="griddy-cell griddy-center griddy-from-5 griddy-to-void">
+                <div class="cell">
+                    Now it's easy to break out on either side!
+                </div>
+            </div>
+        </div>
+
+        <h2>Responsive Sizing</h2>
+        <div class="griddy spacer">
+            <div class="griddy-cell griddy-full griddy-md-from-void griddy-md-to-8">
+                <div class="cell">full, md void to 8</div>
+            </div>
+            <div class="griddy-cell griddy-row-2 griddy-md-row-1 griddy-from-1 griddy-to-6 griddy-md-from-9 griddy-md-to-12">
+                <div class="cell">1 to 6 (row 2), md 9 to 12 (row 1)</div>
+            </div>
+        </div>
+    
+        <div class="griddy spacer">
+            <div class="griddy-cell griddy-from-1 griddy-to-6 griddy-md-to-4">
+                <div class="cell">1 to 6 (row 1), md 1 to 4 (row 1)</div>
+            </div>
+            <div class="griddy-cell griddy-from-7 griddy-to-12 griddy-md-from-5 griddy-md-to-8">
+                <div class="cell">7 to 12 (row 1), md 5 to 8 (row 1)</div>
+            </div>
+            <div class="griddy-cell griddy-row-2 griddy-md-row-1 griddy-from-1 griddy-to-6 griddy-md-from-9 griddy-md-to-void">
+                <div class="cell">1 to 6 (row 2), md 9 to void (row 1)</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

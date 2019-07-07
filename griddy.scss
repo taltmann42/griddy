@@ -1,0 +1,179 @@
+@import './variables.scss';
+@import './breakpoints.scss';
+
+/**
+ * Needed for the approach of using negative margin on the griddy-elements
+ * to easily make breakout possible without setting the padding, whenever
+ * an element goes from/to the void, or is nested and starts from 1 / ends at 12
+ */
+.griddy-container{
+    overflow-x: hidden;
+}
+
+.griddy {
+    display: grid;
+    margin-left: -$griddy-gutter / 2;
+    margin-right: -$griddy-gutter / 2;
+
+    grid-template-columns: ($griddy-gutter / 2) repeat(12,1fr) ($griddy-gutter / 2);
+
+    @each $breakpoint, $griddy-max-width in $griddy-max-widths {
+        @include media-breakpoint-up($breakpoint, $griddy-breakpoints) {
+            grid-template-columns: 
+                1fr
+                repeat(12, $griddy-max-width/12)
+                1fr;
+        }
+    }
+}
+
+.griddy-cell {
+    padding-left: $griddy-gutter / 2;
+    padding-right: $griddy-gutter / 2;
+    grid-row: 1;
+}
+
+.griddy-center {
+    align-self: center;
+}
+
+.griddy-stretch {
+    align-self: stretch;
+}
+
+.griddy-start {
+    align-self: flex-start;
+}
+
+.griddy-end {
+    align-self: flex-end;
+}
+
+.griddy-from-void {
+    grid-column-start: 1;
+}
+
+.griddy-to-void {
+    grid-column-end: 15;
+}
+
+.griddy-void {
+    grid-column-start: 1;
+    grid-column-end: 15;
+}
+
+.griddy-full {
+    grid-column-start: 2;
+    grid-column-end: 14;
+}
+
+@for $i from 1 through 12 {
+    .griddy-from-#{$i} {
+        grid-column-start: $i + 1;
+    }
+    .griddy-to-#{$i} {
+        grid-column-end: $i + 2;
+    }
+
+    // needed for having elements beneath each other on e.g. mobile
+    .griddy-row-#{$i} {
+        grid-row: $i;
+    }
+}
+
+@each $breakpoint in map-keys($griddy-breakpoints) {
+    $infix: breakpoint-infix($breakpoint, $griddy-breakpoints);
+    @include media-breakpoint-up($breakpoint, $griddy-breakpoints) {
+        @for $i from 1 through 12 {
+            .griddy#{$infix}-from-#{$i} {
+                grid-column-start: $i + 1;
+            }
+            .griddy#{$infix}-to-#{$i} {
+                grid-column-end: $i + 2;
+            }
+            // needed for having elements beneath each other on e.g. mobile
+            .griddy#{$infix}-row-#{$i} {
+                grid-row: $i;
+            }
+        }
+
+        .griddy#{$infix}-from-void {
+            grid-column-start: 1;
+        }
+        .griddy#{$infix}-to-void {
+            grid-column-end: 15;
+        }
+        .griddy#{$infix}-void {
+            grid-column-start: 1;
+            grid-column-end: 15;
+        }
+        
+        .griddy#{$infix}-full {
+            grid-column-start: 2;
+            grid-column-end: 14;
+        }
+    }
+}
+
+// And everything again, just for nested grids - bascally omitting the outer columns
+.griddy {
+    .griddy {
+        grid-template-columns: repeat(12,1fr);
+        .griddy-from-void {
+            grid-column-start: 1;
+        }
+
+        .griddy-to-void {
+            grid-column-end: 13;
+        }
+
+        .griddy-void {
+            grid-column-start: 1;
+            grid-column-end: 13;
+        }
+
+        .griddy-full {
+            grid-column-start: 1;
+            grid-column-end: 13;
+        }
+
+        @for $i from 1 through 12 {
+            .griddy-from-#{$i} {
+                grid-column-start: $i;
+            }
+            .griddy-to-#{$i} {
+                grid-column-end: $i + 1;
+            }
+        }
+
+        @each $breakpoint in map-keys($griddy-breakpoints) {
+            $infix: breakpoint-infix($breakpoint, $griddy-breakpoints);
+            @include media-breakpoint-up($breakpoint, $griddy-breakpoints) {
+                @for $i from 1 through 12 {
+                    .griddy#{$infix}-from-#{$i} {
+                        grid-column-start: $i;
+                    }
+                    .griddy#{$infix}-to-#{$i} {
+                        grid-column-end: $i + 1;
+                    }
+                }
+
+                .griddy#{$infix}-from-void {
+                    grid-column-start: 1;
+                }
+                .griddy#{$infix}-to-void {
+                    grid-column-end: 13;
+                }
+                .griddy#{$infix}-void {
+                    grid-column-start: 1;
+                    grid-column-end: 13;
+                }
+                
+                .griddy#{$infix}-full {
+                    grid-column-start: 1;
+                    grid-column-end: 13;
+                }
+            }
+        }
+    }
+}
