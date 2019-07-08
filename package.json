@@ -1,0 +1,32 @@
+{
+  "name": "css-griddy",
+  "version": "1.0.0",
+  "description": "A CSS-grid based layout system for easy grid-breaking and overlapping",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "build": "sass griddy.scss:dist/griddy.css --style compressed",
+    "develop": "sass --watch griddy.scss:dist/griddy.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/taltmann42/griddy.git"
+  },
+  "keywords": [
+    "css-grid",
+    "layout",
+    "columns",
+    "grid-system"
+  ],
+  "author": "Thomas Altmann",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/taltmann42/griddy/issues"
+  },
+  "homepage": "https://github.com/taltmann42/griddy#readme",
+  "devDependencies": {
+    "sass": "^1.22.3"
+  }
+}
