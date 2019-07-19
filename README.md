@@ -1,4 +1,4 @@
-#Griddy McGridface
+# Griddy McGridface
 
 Griddy McGridface (or short - griddy) is a layout-system based on CSS-grid instead of flex which can be used as alternative and/or addition to flex-based grid-systems like Bootstrap.
 
